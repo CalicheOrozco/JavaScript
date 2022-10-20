@@ -92,3 +92,62 @@ const isPalindrome = (str) => {
 
 const f = isPalindrome("Luz azul");
 console.log(f);
+
+// Write a function "trucate" with signature (s: string, n:number, elipsis?) : string):string
+// that truncate "s" if it has more than "n" characters, returning it. if the string doesn't have mroe than "n"
+// characters, just return the string
+
+const truncate = (str, num, ellipsis) => {
+  if (str.length < num) {
+    let result = str;
+    return result;
+  } else {
+    str = str.trim(str)
+    let result = str.slice(0, num);
+    if(ellipsis){
+      result = (result + ellipsis)
+    }else{
+      result = sliced
+    }
+    return result;
+  }
+}
+
+const truncateTest = truncate("hello", 7, "...")
+console.log(truncateTest)
+
+
+
+/*
+Write a function `parseTracks` with signature `(s: string): number[]` that takes a string like `'1-3,5, 7,10 ,11-12'` and returns `[1, 2, 3, 5, 7, 10, 11, 12]`.
+​
+*/
+
+const range = (a,b) => {
+  a = parseInt(a)
+  b = parseInt(b)
+  let arr = [] 
+  for (let i = a; i<=b; i++){
+    arr.push(i)
+  }return(arr)
+
+}
+const parseTracks = (str) => {
+  let splited = str.split(",")
+  let array = splited.reduce((acc, el) => {
+    if ( el.includes("-")){
+      let ranges = el.trim().split("-")
+      let start = ranges[0]
+      let end = ranges[1]
+      let rangeArray = range(start, end)
+      acc = acc.concat(rangeArray)
+    }
+    else {
+      el = parseInt(el)
+      acc.push(el)
+    }return (acc);
+  },[])
+  return array
+}
+ let result2 = parseTracks("1-3,5, 7,10, 11-12")
+  console.log(result2)
