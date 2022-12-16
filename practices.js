@@ -151,3 +151,42 @@ const parseTracks = (str) => {
 }
  let result2 = parseTracks("1-3,5, 7,10, 11-12")
   console.log(result2)
+
+  const spinWords = (str) => {
+  const splitted = str.split(" ");
+  const reversed = splitted.map((el) => {
+    if (el.length >= 5) {
+      return el.split("").reverse().join("");
+    } else {
+      return el;
+    }
+  });
+  const joined = reversed.join(" ");
+  return joined;
+};
+
+// function that take in a string of one or more words, and returns the same string, but with all five or more letter words reversed
+
+const spinWordsTest = spinWords("Hey fellow warriors");
+const spinWordsTest2 = spinWords("This is a test");
+const spinWordsTest3 = spinWords("This is another test");
+
+console.log(spinWordsTest);
+console.log(spinWordsTest2);
+console.log(spinWordsTest3);
+
+// method that take an array of consective (incrasing) letters as input and that return the missing letter in the array
+
+const findMissingLetter = (array) => {
+  array = array.map((el) => el.toLowerCase());
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const splitted = alphabet.split("");
+  const sliced = splitted.slice(splitted.indexOf(array[0]));
+  const missing = sliced.find((el) => !array.includes(el));
+  return missing;
+}
+
+const findMissingLetterTest = findMissingLetter(["a", "b", "c", "d", "f"]);
+const findMissingLetterTest2 = findMissingLetter(["O", "Q", "R", "S"]);
+console.log(findMissingLetterTest);
+console.log(findMissingLetterTest2);
