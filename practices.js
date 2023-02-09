@@ -1,3 +1,23 @@
+const manipulateStudentRecord = (obj, operation, prop, newValue) => {
+  if (operation === "eliminar") {
+    delete obj[prop];
+    return obj;
+  } else if (operation === "editar") {
+    obj[prop] = newValue;
+    return obj;
+  }
+};
+
+const student = {
+  name: "Juan",
+  age: 20,
+  email: "abc@gmail.com",
+};
+
+const result3 = manipulateStudentRecord(student, "editar", "age", 21);
+console.log(result3);
+
+
 const getMaxMin = (array) =>
   array.reduce(
     (acc, element, index) => {
